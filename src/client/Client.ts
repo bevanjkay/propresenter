@@ -1,5 +1,5 @@
-import { Method } from "axios"
-import RequestHandler from "./RequestHandler"
+import type { Method } from "axios"
+import RequestHandler from "../RequestHandler"
 
 type ClientOptions = {
     ip: string

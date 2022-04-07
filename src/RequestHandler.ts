@@ -3,7 +3,7 @@ import axios, { AxiosRequestConfig, Method } from "axios"
 import APIError from "./errors/APIError"
 import RatelimitError from "./errors/RatelimitError"
 
-import AmariBot from "./ProPresenter"
+import AmariBot from "./client/Client"
 
 class RequestHandler {
     client: AmariBot
