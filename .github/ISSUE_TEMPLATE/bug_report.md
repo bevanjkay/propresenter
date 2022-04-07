@@ -26,7 +26,8 @@ If applicable, add screenshots to help explain your problem.
 **Versions**     
 * Node.js:    
 * NPM:    
-* AmariBot.js:     
+* ProPresenter:     
+* This ProPresenter package:
 
 **Additional context**
 Add any other context about the problem here.
