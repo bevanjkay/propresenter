@@ -12,6 +12,14 @@ class RequestHandler {
         this.client = client
     }
 
+    /**
+     *
+     * @param endpoint - The endpoint to fetch
+     * @param method - The HTTP method to use
+     * @param query - Any query strings to add
+     * @param body - The HTTP body to send
+     * @returns The response from the endpoint
+     */
     async request(
         endpoint: string,
         method: Method,
@@ -35,7 +43,8 @@ class RequestHandler {
 
         if (res.status >= 200 && res.status < 300) {
             return res.data
-        } if (res.status === 429) {
+        }
+        if (res.status === 429) {
             throw new RatelimitError(res)
         } else {
             throw new APIError(res)

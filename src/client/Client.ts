@@ -31,6 +31,14 @@ class ProPresenter {
         this.url = `http://${options.ip}:${options.port}/${this.version}`
     }
 
+    /**
+     *
+     * @param endpoint - The endpoint to fetch
+     * @param query - Any query strings to add
+     * @param method - The HTTP method to use
+     * @param body - The HTTP body to send
+     * @returns The response from the endpoint
+     */
     request(endpoint: string, query = {}, method: Method = "GET", body = {}) {
         return this.requestHandler.request(endpoint, method, query, body)
     }
