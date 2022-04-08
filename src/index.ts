@@ -1,4 +1,10 @@
+import updateNotifier from "update-notifier"
+import packageJson from "../package.json"
+
+updateNotifier({ pkg: packageJson }).notify()
+
 export { version } from "../package.json"
+
 export { default as Collection } from "./util/Collection"
 export { default as Client } from "./client/Client"
 

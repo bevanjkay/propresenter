@@ -14,13 +14,14 @@ module.exports = {
     parserOptions: {
         ecmaVersion: "latest",
     },
-    plugins: ["@typescript-eslint"],
+    plugins: ["@typescript-eslint", "eslint-plugin-tsdoc"],
     rules: {
         quotes: ["error", "double", { allowTemplateLiterals: true }],
         semi: ["error", "never"],
         indent: ["error", 4],
         "import/extensions": ["error", "never"],
         "max-len": ["error", { code: 150 }],
+        "tsdoc/syntax": "warn",
     },
     ignorePatterns: ["dist/*"],
     settings: {
