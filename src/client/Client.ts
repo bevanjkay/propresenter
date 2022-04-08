@@ -1,34 +1,41 @@
 import type { Method } from "axios"
-import RequestHandler from "../RequestHandler"
+import RequestHandler from "../util/RequestHandler"
+import { Macros } from ".."
 
 type ClientOptions = {
     ip: string
     port: string
-    version?: string
     debug?: boolean
+    requestDebug?: boolean
+    version?: string
+    url?: string
 }
 
-class ProPresenter {
-    ip: string
+interface ClientInterface {
+    options: ClientOptions
+    requestHandler: RequestHandler
+    macros: Macros
+}
 
-    port: string
-
-    debug: boolean
-
-    version: string
+class Client implements ClientInterface {
+    options: ClientOptions
 
     requestHandler: RequestHandler
 
-    url: string
+    macros: Macros
 
     constructor(options: ClientOptions) {
-        this.debug = options.debug || false
-        this.port = options.port
-        this.ip = options.ip || "127.0.0.1"
-        this.version = options.version || "v1"
+        this.options = {
+            debug: options.debug || false,
+            requestDebug: options.requestDebug || false,
+            port: options.port,
+            ip: options.ip || "127.0.0.1",
+            version: options.version || "v1",
+        }
+        this.options.url = `http://${this.options.ip}:${this.options.port}/${this.options.version}`
         this.requestHandler = new RequestHandler(this)
 
-        this.url = `http://${options.ip}:${options.port}/${this.version}`
+        this.macros = new Macros(this)
     }
 
     /**
@@ -44,4 +51,4 @@ class ProPresenter {
     }
 }
 
-export default ProPresenter
+export default Client

@@ -7,6 +7,7 @@ export { version } from "../package.json"
 
 export { default as Collection } from "./util/Collection"
 export { default as Client } from "./client/Client"
+export { default as Macros } from "./modules/Macros"
 
 /*
 Hi, welcome to looking in my code.

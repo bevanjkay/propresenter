@@ -1,9 +1,9 @@
 import axios, { AxiosRequestConfig, Method } from "axios"
 
-import APIError from "./errors/APIError"
-import RatelimitError from "./errors/RatelimitError"
+import APIError from "../errors/APIError"
+import NotRunningError from "../errors/NotRunningError"
 
-import AmariBot from "./client/Client"
+import AmariBot from "../client/Client"
 
 class RequestHandler {
     client: AmariBot
@@ -31,23 +31,26 @@ class RequestHandler {
             headers: {
                 "Content-Type": "application/json",
             },
-            baseURL: this.client.url,
+            baseURL: this.client.options.url,
             url: endpoint,
             method,
             data: body,
             params: query,
-            timeout: 15000,
+            timeout: 10000,
         }
 
-        const res = await axios.request(options)
+        const res = await axios.request(options).catch((error) => {
+            if (error.code === "ECONNABORTED") throw new NotRunningError()
+            throw new Error(error)
+        })
 
-        if (res.status >= 200 && res.status < 300) {
-            return res.data
-        }
-        if (res.status === 429) {
-            throw new RatelimitError(res)
-        } else {
+        // eslint-disable-next-line no-console
+        if (this.client.options.requestDebug) console.debug(res)
+
+        if (res.status >= 400) {
             throw new APIError(res)
+        } else {
+            return res.data
         }
     }
 }

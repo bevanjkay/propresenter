@@ -7,7 +7,17 @@ class APIError extends Error {
         super()
         this.name = this.constructor.name
         this.status = response.status
-        this.message = response.data ? response.data.error : undefined
+        switch (response.status) {
+        case 404:
+            this.message = "The requested endpoint was not found."
+            break
+        case 429:
+            this.message = "The endpoint has been ratelimited."
+            break
+        default:
+            this.message = "An unknown error occurred."
+            break
+        }
     }
 }
 
