@@ -1,6 +1,6 @@
 {
     "name": "propresenter",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "A module to easily interface with the ProPresenter API",
     "main": "dist/index.js",
     "scripts": {
