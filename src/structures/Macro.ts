@@ -3,11 +3,8 @@ import APIMacro from "../types/macro"
 
 class Macro {
     uuid: string
-
     name: string
-
     index: number
-
     color: Color
 
     constructor(macro: APIMacro) {

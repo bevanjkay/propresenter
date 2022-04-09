@@ -21,6 +21,11 @@ module.exports = {
         "import/extensions": ["error", "never"],
         "max-len": ["error", { code: 150 }],
         "tsdoc/syntax": "warn",
+        "lines-between-class-members": [
+            "error",
+            "always",
+            { exceptAfterSingleLine: true },
+        ],
     },
     ignorePatterns: ["dist/*"],
     settings: {

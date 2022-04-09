@@ -1,6 +1,7 @@
 import type { Method } from "axios"
 import RequestHandler from "../util/RequestHandler"
 import { Macros } from ".."
+import Props from "../modules/Props"
 
 type ClientOptions = {
     ip: string
@@ -15,14 +16,14 @@ interface ClientInterface {
     options: ClientOptions
     requestHandler: RequestHandler
     macros: Macros
+    props: Props
 }
 
 class Client implements ClientInterface {
     options: ClientOptions
-
     requestHandler: RequestHandler
-
     macros: Macros
+    props: Props
 
     constructor(options: ClientOptions) {
         this.options = {
@@ -36,6 +37,7 @@ class Client implements ClientInterface {
         this.requestHandler = new RequestHandler(this)
 
         this.macros = new Macros(this)
+        this.props = new Props(this)
     }
 
     /**

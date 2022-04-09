@@ -3,12 +3,12 @@ import axios, { AxiosRequestConfig, Method } from "axios"
 import APIError from "../errors/APIError"
 import NotRunningError from "../errors/NotRunningError"
 
-import AmariBot from "../client/Client"
+import Client from "../client/Client"
 
 class RequestHandler {
-    client: AmariBot
+    client: Client
 
-    constructor(client: AmariBot) {
+    constructor(client: Client) {
         this.client = client
     }
 
