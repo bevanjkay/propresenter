@@ -1,4 +1,5 @@
 import type { Method } from "axios"
+import { EventEmitter } from "events"
 import RequestHandler from "../util/RequestHandler"
 import { Macros } from ".."
 import Props from "../modules/Props"
@@ -12,13 +13,14 @@ type ClientOptions = {
     url?: string
 }
 
-class Client {
+class Client extends EventEmitter {
     options: ClientOptions
     requestHandler: RequestHandler
     macros: Macros
     props: Props
 
     constructor(options: ClientOptions) {
+        super()
         this.options = {
             debug: options.debug || false,
             requestDebug: options.requestDebug || false,
