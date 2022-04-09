@@ -12,14 +12,7 @@ type ClientOptions = {
     url?: string
 }
 
-interface ClientInterface {
-    options: ClientOptions
-    requestHandler: RequestHandler
-    macros: Macros
-    props: Props
-}
-
-class Client implements ClientInterface {
+class Client {
     options: ClientOptions
     requestHandler: RequestHandler
     macros: Macros
@@ -38,6 +31,11 @@ class Client implements ClientInterface {
 
         this.macros = new Macros(this)
         this.props = new Props(this)
+    }
+
+    async findMyMouse() {
+        await this.request("/find_my_mouse")
+        return true
     }
 
     /**
