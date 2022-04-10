@@ -1,0 +1,18 @@
+export default [
+    "capture/status",
+    "look/current",
+    "messages",
+    "presentation/current",
+    "presentation/slide_index",
+    "presentation/focused/timeline",
+    "stage/message",
+    "status/layers",
+    "status/stage_screens",
+    "status/audience_screens",
+    "status/screens",
+    "status/slide",
+    "timers",
+    "timers/current",
+    "timer/system_time",
+    "timer/video_countdown",
+]

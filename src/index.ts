@@ -9,6 +9,9 @@ export { default as Collection } from "./util/Collection"
 export { default as Client } from "./client/Client"
 export { default as Macros } from "./modules/Macros"
 export { default as Props } from "./modules/Props"
+export { default as Subscriptions } from "./modules/Subscriptions"
+
+export { default as allStreamingEndpoints } from "./util/AllStreamingEndpoints"
 
 /*
 Hi, welcome to looking in my code.

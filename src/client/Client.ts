@@ -1,8 +1,9 @@
 import type { Method } from "axios"
 import { EventEmitter } from "events"
 import RequestHandler from "../util/RequestHandler"
-import { Macros } from ".."
-import Props from "../modules/Props"
+import {
+    Macros, Props, Subscriptions, allStreamingEndpoints,
+} from ".."
 
 type ClientOptions = {
     ip: string
@@ -11,6 +12,7 @@ type ClientOptions = {
     requestDebug?: boolean
     version?: string
     url?: string
+    connections?: string[]
 }
 
 class Client extends EventEmitter {
@@ -18,6 +20,7 @@ class Client extends EventEmitter {
     requestHandler: RequestHandler
     macros: Macros
     props: Props
+    subscriptions?: Subscriptions
 
     constructor(options: ClientOptions) {
         super()
@@ -38,6 +41,11 @@ class Client extends EventEmitter {
     async findMyMouse() {
         await this.request("/find_my_mouse")
         return true
+    }
+
+    subscribe(routes: string[] = allStreamingEndpoints) {
+        this.subscriptions = new Subscriptions(this, routes)
+        return this.subscriptions
     }
 
     /**
