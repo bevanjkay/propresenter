@@ -6,9 +6,11 @@ updateNotifier({ pkg: packageJson }).notify()
 export { version } from "../package.json"
 
 export { default as Collection } from "./util/Collection"
+export { default as RequestHandler } from "./util/RequestHandler"
 export { default as Client } from "./client/Client"
 export { default as Macros } from "./modules/Macros"
 export { default as Props } from "./modules/Props"
+export { default as Messages } from "./modules/Messages"
 
 /*
 Hi, welcome to looking in my code.

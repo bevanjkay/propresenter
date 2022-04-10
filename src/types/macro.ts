@@ -1,12 +1,8 @@
 import Color from "./color"
+import { APIId } from "./id"
 
-type APIMacroId = {
-    uuid: string
-    name: string
-    index: number
-}
 type APIMacro = {
-    id: APIMacroId,
+    id: APIId,
     color: Color
 }
 

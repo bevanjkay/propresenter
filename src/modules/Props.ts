@@ -2,6 +2,7 @@ import Collection from "@discordjs/collection"
 import BaseModule from "./BaseModule"
 import APIProp from "../types/prop"
 import Prop from "../structures/Prop"
+import { FetchId } from "../types/id"
 
 class Props extends BaseModule {
     async fetchAll(): Promise<Collection<string, Prop>> {
@@ -13,43 +14,23 @@ class Props extends BaseModule {
         return propsReturned
     }
 
-    /**
-     * @remarks The ID you pass here can either be the UUID of the prop, the name of the prop, or the 0-based index of the prop.
-     */
-
-    async fetch(id: string | number) {
-        const fetchId = `${id}` // cast number to a string
-        const result = await this.client.request(`/prop/${fetchId}`)
+    async fetch(id: FetchId) {
+        const result = await this.client.request(`/prop/${id}`)
         return new Prop(result)
     }
 
-    /**
-     * @remarks The ID you pass here can either be the UUID of the prop, the name of the prop, or the 0-based index of the prop.
-     */
-
-    async trigger(id: string | number) {
-        const fetchId = `${id}`
-        await this.client.request(`/prop/${fetchId}/trigger`)
+    async trigger(id: FetchId) {
+        await this.client.request(`/prop/${id}/trigger`)
         return true
     }
 
-    /**
-     * @remarks The ID you pass here can either be the UUID of the prop, the name of the prop, or the 0-based index of the prop.
-     */
-
-    async clear(id: string | number) {
-        const fetchId = `${id}`
-        await this.client.request(`/prop/${fetchId}/clear`)
+    async clear(id: FetchId) {
+        await this.client.request(`/prop/${id}/clear`)
         return true
     }
 
-    /**
-     * @remarks The ID you pass here can either be the UUID of the prop, the name of the prop, or the 0-based index of the prop.
-     */
-
-    async delete(id: string | number) {
-        const fetchId = `${id}`
-        await this.client.request(`/prop/${fetchId}/delete`, {}, "DELETE")
+    async delete(id: FetchId) {
+        await this.client.request(`/prop/${id}/delete`, {}, "DELETE")
         return true
     }
 
@@ -57,9 +38,8 @@ class Props extends BaseModule {
      * @remarks Not yet implemented fully, due to it being an image
      */
 
-    async getThumbnail(id: string | number) {
-        const fetchId = `${id}`
-        const thumbnail = await this.client.request(`/prop/${fetchId}/thumbnail`)
+    async getThumbnail(id: FetchId) {
+        const thumbnail = await this.client.request(`/prop/${id}/thumbnail`)
         return thumbnail
     }
 }

@@ -26,6 +26,7 @@ module.exports = {
             "always",
             { exceptAfterSingleLine: true },
         ],
+        "class-methods-use-this": "warn",
     },
     ignorePatterns: ["dist/*"],
     settings: {

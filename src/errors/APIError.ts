@@ -8,6 +8,9 @@ class APIError extends Error {
         this.name = this.constructor.name
         this.status = response.status
         switch (response.status) {
+        case 400:
+            this.message = "The provided data was invalid"
+            break
         case 404:
             this.message = "The requested endpoint was not found."
             break

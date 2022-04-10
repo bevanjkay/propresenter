@@ -1,10 +1,7 @@
-type APIPropId = {
-    uuid: string
-    name: string
-    index: number
-}
+import { APIId } from "./id"
+
 type APIProp = {
-    id: APIPropId,
+    id: APIId,
     is_active: boolean
 }
 

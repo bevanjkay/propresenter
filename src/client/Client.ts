@@ -1,8 +1,8 @@
 import type { Method } from "axios"
 import { EventEmitter } from "events"
-import RequestHandler from "../util/RequestHandler"
-import { Macros } from ".."
-import Props from "../modules/Props"
+import {
+    Macros, Props, Messages, RequestHandler,
+} from ".."
 
 type ClientOptions = {
     ip: string
@@ -18,6 +18,7 @@ class Client extends EventEmitter {
     requestHandler: RequestHandler
     macros: Macros
     props: Props
+    messages: Messages
 
     constructor(options: ClientOptions) {
         super()
@@ -33,6 +34,7 @@ class Client extends EventEmitter {
 
         this.macros = new Macros(this)
         this.props = new Props(this)
+        this.messages = new Messages(this)
     }
 
     async findMyMouse() {

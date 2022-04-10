@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig, Method } from "axios"
 
+import util from "util"
 import APIError from "../errors/APIError"
 import NotRunningError from "../errors/NotRunningError"
 
@@ -46,6 +47,8 @@ class RequestHandler {
 
         // eslint-disable-next-line no-console
         if (this.client.options.requestDebug) console.debug(res)
+        // eslint-disable-next-line no-console
+        if (this.client.options.debug) console.debug(util.inspect(res.data, { showHidden: false, depth: null }))
 
         if (res.status >= 400) {
             throw new APIError(res)
