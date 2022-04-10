@@ -4,6 +4,10 @@ import APIProp from "../types/prop"
 import Prop from "../structures/Prop"
 import { FetchId } from "../types/id"
 
+type ThumbnailQuery = {
+    quality?: number
+}
+
 class Props extends BaseModule {
     async fetchAll(): Promise<Collection<string, Prop>> {
         const result = await this.client.request("/props")
@@ -35,11 +39,16 @@ class Props extends BaseModule {
     }
 
     /**
-     * @remarks Not yet implemented fully, due to it being an image
+     * {@link https://renewedvision.com/api_spec/index.html#/Prop/propThumbnailGet}
      */
 
-    async getThumbnail(id: FetchId) {
-        const thumbnail = await this.client.request(`/prop/${id}/thumbnail`)
+    async getThumbnail(id: FetchId, quality?: number): Promise<unknown> {
+        const query: ThumbnailQuery = {}
+        if (quality) query.quality = quality
+        const thumbnail = await this.client.request(
+            `/prop/${id}/thumbnail`,
+            query,
+        )
         return thumbnail
     }
 }

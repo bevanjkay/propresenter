@@ -3,6 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-unused-vars */
 
+const { writeFile } = require("fs/promises")
 const ProPresenter = require("./dist/src")
 
 const prop = new ProPresenter.Client({
@@ -12,8 +13,7 @@ const prop = new ProPresenter.Client({
 })
 
 const run = async () => {
-    const x = await prop.messages.fetchAll()
-    console.log(x)
+    console.log("No test")
 }
 
 run()
