@@ -1,5 +1,6 @@
 import { Collection } from ".."
 import Playlist, { PlaylistFolder } from "../structures/Audio"
+import { APIPlaylistFolder } from "../types/audio"
 import { FetchId } from "../types/id"
 import BaseModule from "./BaseModule"
 
@@ -7,7 +8,7 @@ class Audio extends BaseModule {
     async fetchFolders(): Promise<Collection<string, PlaylistFolder>> {
         const result = await this.client.request("/audio/playlists")
         const folders = new Collection<string, PlaylistFolder>()
-        result.forEach((folder) => {
+        result.forEach((folder: APIPlaylistFolder) => {
             folders.set(folder.id.name, new PlaylistFolder(folder))
         })
         return folders

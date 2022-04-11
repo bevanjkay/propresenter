@@ -1,4 +1,4 @@
-import BaseModule from "../../dist/src/modules/BaseModule"
+import BaseModule from "./BaseModule"
 import AnnouncementStatus from "../structures/AnnouncementStatus"
 
 class Announcements extends BaseModule {
