@@ -13,7 +13,7 @@ const prop = new ProPresenter.Client({
 })
 
 const run = async () => {
-    const x = await prop.timers.fetchAll()
+    const x = await prop.request("/audio/playlists")
     console.log(x)
 }
 
