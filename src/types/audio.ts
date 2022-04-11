@@ -1,6 +1,7 @@
 import { APIId } from "./id"
 
 export type MediaType = "audio" | "video" | "image"
+export type PlaylistFolderType = "playlist" | "folder"
 
 export type APIAudio = {
     id: APIId
@@ -16,6 +17,6 @@ export type APIPlaylist = {
 
 export type APIPlaylistFolder = {
     id: APIId
-    type: "playlist" | "folder"
+    type: PlaylistFolderType
     children: APIPlaylistFolder[]
 }
