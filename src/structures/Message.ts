@@ -5,9 +5,9 @@ import APIMessage, {
     APIMessageText,
     APIMessageTimer,
     DateTimeStyle,
-    TimeOfDay,
     TimerStyle,
 } from "../types/message"
+import { TimeOfDay } from "../types/timer"
 import Collection from "../util/Collection"
 
 class MessageText {

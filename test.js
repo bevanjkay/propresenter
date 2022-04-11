@@ -13,7 +13,8 @@ const prop = new ProPresenter.Client({
 })
 
 const run = async () => {
-    console.log("No test")
+    const x = await prop.timers.fetchAll()
+    console.log(x)
 }
 
 run()

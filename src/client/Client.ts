@@ -3,6 +3,8 @@ import { EventEmitter } from "events"
 import {
     Macros, Props, Messages, RequestHandler,
 } from ".."
+import Timers from "../modules/Timers"
+import SystemInfo from "../structures/SystemInfo"
 
 type ClientOptions = {
     ip: string
@@ -19,6 +21,7 @@ class Client extends EventEmitter {
     macros: Macros
     props: Props
     messages: Messages
+    timers: Timers
 
     constructor(options: ClientOptions) {
         super()
@@ -35,11 +38,17 @@ class Client extends EventEmitter {
         this.macros = new Macros(this)
         this.props = new Props(this)
         this.messages = new Messages(this)
+        this.timers = new Timers(this)
     }
 
     async findMyMouse() {
         await this.request("/find_my_mouse")
         return true
+    }
+
+    async getInfo() {
+        const info = await this.request("/version")
+        return new SystemInfo(info)
     }
 
     /**

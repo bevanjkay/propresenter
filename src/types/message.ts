@@ -1,4 +1,5 @@
 import { APIId } from "./id"
+import { TimeOfDay } from "./timer"
 
 export type DateTimeStyle = "none" | "short" | "medium" | "long" | "full"
 export type TimerStyle =
@@ -7,7 +8,6 @@ export type TimerStyle =
     | "long"
     | "remove_short"
     | "remove_long"
-export type TimeOfDay = "am" | "pm" | "24_hour"
 
 export type APIMessageText = {
     name: string

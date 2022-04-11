@@ -11,6 +11,7 @@ export { default as Client } from "./client/Client"
 export { default as Macros } from "./modules/Macros"
 export { default as Props } from "./modules/Props"
 export { default as Messages } from "./modules/Messages"
+export { default as Timers } from "./modules/Timers"
 
 /*
 Hi, welcome to looking in my code.

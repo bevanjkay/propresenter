@@ -5,7 +5,8 @@
     "main": "dist/index.js",
     "scripts": {
         "build": "rimraf dist && tsc",
-        "docs": "typedoc"
+        "docs": "typedoc",
+        "dev:docs": "npm run docs && cd docs && npx serve && cd .. && npx rimraf docs"
     },
     "repository": {
         "type": "git",
