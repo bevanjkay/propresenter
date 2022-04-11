@@ -1,9 +1,15 @@
 import type { Method } from "axios"
 import { EventEmitter } from "events"
 import {
-    Macros, Props, Messages, RequestHandler,
+    Macros,
+    Props,
+    Messages,
+    Audio,
+    Capture,
+    Timers,
+    Announcements,
+    RequestHandler,
 } from ".."
-import Timers from "../modules/Timers"
 import SystemInfo from "../structures/SystemInfo"
 
 type ClientOptions = {
@@ -22,6 +28,9 @@ class Client extends EventEmitter {
     props: Props
     messages: Messages
     timers: Timers
+    announcements: Announcements
+    audio: Audio
+    capture: Capture
 
     constructor(options: ClientOptions) {
         super()
@@ -39,6 +48,9 @@ class Client extends EventEmitter {
         this.props = new Props(this)
         this.messages = new Messages(this)
         this.timers = new Timers(this)
+        this.announcements = new Announcements(this)
+        this.audio = new Audio(this)
+        this.capture = new Capture(this)
     }
 
     async findMyMouse() {

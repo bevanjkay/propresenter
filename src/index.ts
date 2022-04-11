@@ -12,6 +12,9 @@ export { default as Macros } from "./modules/Macros"
 export { default as Props } from "./modules/Props"
 export { default as Messages } from "./modules/Messages"
 export { default as Timers } from "./modules/Timers"
+export { default as Announcements } from "./modules/Announcements"
+export { default as Audio } from "./modules/Audio"
+export { default as Capture } from "./modules/Capture"
 
 /*
 Hi, welcome to looking in my code.
