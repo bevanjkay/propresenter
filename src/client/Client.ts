@@ -8,7 +8,9 @@ import {
     Capture,
     Timers,
     Announcements,
+    Slides,
     RequestHandler,
+    StreamHandler,
 } from ".."
 import SystemInfo from "../structures/SystemInfo"
 
@@ -18,12 +20,13 @@ type ClientOptions = {
     debug?: boolean
     requestDebug?: boolean
     version?: string
-    url?: string
+    url: string
 }
 
 class Client extends EventEmitter {
     options: ClientOptions
     requestHandler: RequestHandler
+    streamHandler: StreamHandler
     macros: Macros
     props: Props
     messages: Messages
@@ -31,6 +34,7 @@ class Client extends EventEmitter {
     announcements: Announcements
     audio: Audio
     capture: Capture
+    slides: Slides
 
     constructor(options: ClientOptions) {
         super()
@@ -40,9 +44,11 @@ class Client extends EventEmitter {
             port: options.port,
             ip: options.ip || "127.0.0.1",
             version: options.version || "v1",
+            url: "",
         }
         this.options.url = `http://${this.options.ip}:${this.options.port}/${this.options.version}`
         this.requestHandler = new RequestHandler(this)
+        this.streamHandler = new StreamHandler(this)
 
         this.macros = new Macros(this)
         this.props = new Props(this)
@@ -51,6 +57,7 @@ class Client extends EventEmitter {
         this.announcements = new Announcements(this)
         this.audio = new Audio(this)
         this.capture = new Capture(this)
+        this.slides = new Slides(this)
     }
 
     async findMyMouse() {

@@ -3,7 +3,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-unused-vars */
 
-const { writeFile } = require("fs/promises")
 const ProPresenter = require("./dist/src")
 
 const prop = new ProPresenter.Client({
@@ -11,10 +10,19 @@ const prop = new ProPresenter.Client({
     port: 1025,
     debug: true,
 })
+prop.on("slideChange", (slides) => {
+    console.log(slides)
+})
 
 const run = async () => {
-    const x = await prop.request("/audio/playlists")
+    const x = await prop.slides.subscribe()
     console.log(x)
+
+    let num = 0
+    // eslint-disable-next-line no-constant-condition
+    while (true) {
+        num += 1
+    }
 }
 
 run()

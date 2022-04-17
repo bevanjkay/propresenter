@@ -41,7 +41,7 @@ class RequestHandler {
         }
 
         const res = await axios.request(options).catch((error) => {
-            if (error.code === "ECONNABORTED") throw new NotRunningError()
+            if (["ECONNABORTED", "ECONNREFUSED"].includes(error.code)) throw new NotRunningError()
             throw new Error(error)
         })
 
